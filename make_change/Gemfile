@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+gem "awesome_print"
+
+group :test do
+  gem "minitest"
+end

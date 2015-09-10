@@ -1,2 +1,3 @@
-guard :minitest, test_folders: "test", test_file_patterns: "test_*.rb", autorun: true do |m|
+guard :minitest do |m|
+  watch(%r{^test/test_.+\.rb$})
 end

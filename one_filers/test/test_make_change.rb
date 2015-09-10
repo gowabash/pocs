@@ -4,6 +4,7 @@ require "minitest/autorun"
 module Currency
   class Change
     attr_reader :quarters, :nickles, :dimes, :pennies
+    @amount = 0
 
     def initialize(q, d, n, p)
       @quarters = q
@@ -11,17 +12,22 @@ module Currency
       @nickles = n
       @pennies = p
     end
-  end
 
-  def make_change(amount)
-    quarters = amount / 25
-    left_over = amount % 25
-    dimes = left_over / 10
-    left_over = left_over % 10
-    nickles = left_over / 5
-    pennies = left_over % 5
+    def self.get_coins(value)
+      coins = @amount / value
+      @amount = @amount % value
+      coins
+    end
 
-    Change.new(quarters, dimes, nickles, pennies)
+    def self.make_change(amount)
+      @amount = amount
+      quarters = get_coins(25)
+      dimes = get_coins(10)
+      nickles = get_coins(5)
+      pennies = get_coins(1)
+
+      Change.new(quarters, dimes, nickles, pennies)
+    end
   end
 end
 
@@ -29,7 +35,7 @@ class TestMakeChange < Minitest::Test
   include Currency
   def test_just_quarters
     # $1.00
-    change = make_change(100)
+    change = Change.make_change(100)
     assert_equal 4, change.quarters
     assert_equal 0, change.dimes
     assert_equal 0, change.nickles
@@ -37,7 +43,7 @@ class TestMakeChange < Minitest::Test
   end
 
   def test_just_dimes
-    change = make_change(20)
+    change = Change.make_change(20)
     assert_equal 0, change.quarters
     assert_equal 2, change.dimes
     assert_equal 0, change.nickles
@@ -45,7 +51,7 @@ class TestMakeChange < Minitest::Test
   end
 
   def test_just_nickles
-    change = make_change(5)
+    change = Change.make_change(5)
     assert_equal 0, change.quarters
     assert_equal 0, change.dimes
     assert_equal 1, change.nickles
@@ -53,7 +59,7 @@ class TestMakeChange < Minitest::Test
   end
 
   def test_just_pennies
-    change = make_change(4)
+    change = Change.make_change(4)
     assert_equal 0, change.quarters
     assert_equal 0, change.dimes
     assert_equal 0, change.nickles
@@ -61,7 +67,7 @@ class TestMakeChange < Minitest::Test
   end
 
   def test_all
-    change = make_change(92)
+    change = Change.make_change(92)
     assert_equal 3, change.quarters
     assert_equal 1, change.dimes
     assert_equal 1, change.nickles

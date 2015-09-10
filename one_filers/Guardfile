@@ -1,0 +1,2 @@
+guard :minitest, test_folders: "test", test_file_patterns: "test_*.rb", autorun: true do |m|
+end

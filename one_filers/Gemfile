@@ -4,4 +4,6 @@ gem "awesome_print"
 
 group :test do
   gem "minitest"
+  gem "guard"
+  gem "guard-minitest"
 end

@@ -1,6 +1,12 @@
 source "https://rubygems.org"
 
 gem "awesome_print"
+gem "mongo"
+gem "bson"
+gem "bson_ext"
+
+#needed for lat_long_test
+gem "geoip"
 
 group :test do
   gem "minitest"

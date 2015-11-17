@@ -5,8 +5,11 @@ gem "mongo"
 gem "bson"
 gem "bson_ext"
 
-#needed for lat_long_test
+# needed for lat_long_test
 gem "geoip"
+
+# Needed for automatic
+gem "automatic-client", :path => "~/poc2/automatic-client"
 
 group :test do
   gem "minitest"

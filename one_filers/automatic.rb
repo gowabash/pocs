@@ -3,6 +3,14 @@ Bundler.require
 
 require "automatic"
 
+# The following values are needed in .env file
+# API_HOST
+# AUTOMATIC_ACCESS_TOKEN
+# AUTOMATIC_SECRET
+# CLIENT_ID
+# AUTOMATIC_APP_LOGGER
+# AUTOMATIC_REQUEST_LOGGER
+# AUTOMATIC_CACHE_LOGGER
 
 trips = Automatic::Models::Trips.all
 

@@ -4,6 +4,8 @@ gem "awesome_print"
 gem "mongo"
 gem "bson"
 gem "bson_ext"
+gem "httparty"
+gem "dotenv"
 
 # needed for lat_long_test
 gem "geoip"

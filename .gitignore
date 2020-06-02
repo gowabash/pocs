@@ -1,3 +1,10 @@
 .env
 *.log
 .*.sw*
+
+# golang specific
+main
+
+# swift_checker
+swift_checker
+naptown_today
